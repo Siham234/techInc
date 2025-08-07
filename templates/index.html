@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechInc | Software Solutions</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+  
+  <header>
+    <div class="logo">TechInc</div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-text">
+        <h1>We Build World-Class Software</h1>
+        <p>Empowering businesses with scalable digital solutions</p>
+        <a href="#contact" class="btn">Get Started</a>
+      </div>
+      <div class="hero-image">
+        <img src="{{ url_for('static', filename='images/pexels-mikael-blomkvist-6476270.jpg') }}" alt="Businessman working on a laptop" />
+      </div>
+    </div>
+  </section>
+
+  <section class="services fade-in" id="services">
+    <h2>Our Services</h2>
+    <div class="service-list">
+      <div class="service-item">
+        <h3>Custom Software Development</h3>
+        <p>We build tailor-made web and mobile applications that align with your business goals.</p>
+      </div>
+      <div class="service-item">
+        <h3>Cloud Integration</h3>
+        <p>Modernize your infrastructure with secure and scalable cloud-based solutions.</p>
+      </div>
+      <div class="service-item">
+        <h3>UI/UX Design</h3>
+        <p>Design intuitive and engaging digital experiences that delight your users.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="team fade-in" id="about">
+    <h2>Meet Our Team</h2>
+    <div class="team-members">
+      <div class="member">
+        <img src="{{ url_for('static', filename='images/members/uifaces-human-image (1).jpg') }}" alt="Marriane James" />
+        <h3>Marriane James</h3>
+        <p>Chief Technology Officer</p>
+      </div>
+      <div class="member">
+        <img src="{{ url_for('static', filename='images/members/uifaces-human-image (2).jpg') }}" alt="James Mwangi" />
+        <h3>James Mwangi</h3>
+        <p>Full-Stack Developer</p>
+      </div>
+      <div class="member">
+        <img src="{{ url_for('static', filename='images/members/uifaces-human-image.jpg') }}" alt="Kevin Tariq" />
+        <h3>Kevin Tariq</h3>
+        <p>UI/UX Designer</p>
+      </div>
+    </div>
+  </section>
+
+ <section class="contact fade-in" id="contact">
+  <h2>Contact Us</h2>
+  <p>Have a project in mind or just want to say hello? Fill the form below.</p>
+
+  {% if success %}
+    <p style="color: green; font-weight: bold;">Thanks for contacting us! We’ll be in touch shortly.</p>
+  {% endif %}
+
+ <form action="/contact" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+  <button type="submit">Send</button>
+</form>
+
+<!-- In templates/index.html -->
+{% if success %}
+  <p style="color: green;">Message sent successfully!</p>
+{% elif error %}
+  <p style="color: red;">Failed to send message. Try again.</p>
+{% endif %}
+
+
+
+</section>
+
+
+
+  <section class="testimonials fade-in" id="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-box">
+      <p id="testimonial-text">TechInc helped us scale our systems with zero downtime. Highly recommended!</p>
+      <h4 id="testimonial-author">— Amina O., CEO at FinTech Africa</h4>
+      <div class="testimonial-nav">
+        <button onclick="prevTestimonial()">← Prev</button>
+        <button onclick="nextTestimonial()">Next →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-choose-us fade-in" id="why">
+    <h2>Why Choose TechInc</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <img src="{{ url_for('static', filename='icons/icons8-briefcase-50.png') }}" alt="Expertise Icon">
+        <h3>Industry Expertise</h3>
+        <p>We bring deep experience in building scalable, secure, and custom digital solutions.</p>
+      </div>
+      <div class="why-card">
+        <img src="{{ url_for('static', filename='icons/icons8-headset-50.png') }}" alt="Support Icon">
+        <h3>Reliable Support</h3>
+        <p>24/7 technical support to ensure your business never stops growing.</p>
+      </div>
+      <div class="why-card">
+        <img src="{{ url_for('static', filename='icons/icons8-light-bulb-50.png') }}" alt="Innovation Icon">
+        <h3>Innovation-Driven</h3>
+        <p>We stay ahead of trends and adopt modern tools to keep your business competitive.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section fade-in" id="stats">
+    <h2>Our Impact</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3><span class="counter" data-target="20">0</span>+</h3>
+        <p>Projects Completed</p>
+      </div>
+      <div class="stat-card">
+        <h3><span class="counter" data-target="15">0</span>+</h3>
+        <p>Happy Clients</p>
+      </div>
+      <div class="stat-card">
+        <h3><span class="counter" data-target="99">0</span>%</h3>
+        <p>Uptime Guarantee</p>
+      </div>
+      <div class="stat-card">
+        <h3><span class="counter" data-target="24">0</span>/7</h3>
+        <p>Customer Support</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>TechInc</h3>
+        <p>Empowering businesses with scalable digital solutions.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:syhamqassim@gmail.com">syhamqassim@gmail.com</a></p>
+        <div class="social-icons">
+          <a href="#"><img src="{{ url_for('static', filename='icons/icons8-github-50.png') }}" alt="GitHub" /></a>
+          <a href="#"><img src="{{ url_for('static', filename='icons/icons8-linkedin-48.png') }}" alt="LinkedIn" /></a>
+        </div>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2025 TechInc. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const testimonials = [
+      {
+        text: "TechInc helped us scale our systems with zero downtime. Highly recommended!",
+        author: "— Amina O., CEO at FinTech Africa"
+      },
+      {
+        text: "They delivered our app ahead of schedule and with great UX. Super team!",
+        author: "— Brian M., Project Manager at HealthNow"
+      },
+      {
+        text: "Professional, reliable, and innovative. TechInc is our long-term partner.",
+        author: "— Cynthia K., Founder of Shop360"
+      }
+    ];
+
+    let current = 0;
+
+    function showTestimonial(index) {
+      document.getElementById('testimonial-text').textContent = testimonials[index].text;
+      document.getElementById('testimonial-author').textContent = testimonials[index].author;
+    }
+
+    function nextTestimonial() {
+      current = (current + 1) % testimonials.length;
+      showTestimonial(current);
+    }
+
+    function prevTestimonial() {
+      current = (current - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(current);
+    }
+
+    setInterval(nextTestimonial, 7000);
+  </script>
+
+</body>
+</html>
