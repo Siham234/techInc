@@ -41,7 +41,7 @@ The contact form sends messages to the admin email using Gmail SMTP.
 
 ## 📬 Live Demo
 
-[🔗 View the Live Site](https://your-render-url-here.com)
+[🔗 View the Live Site](https://techinc.onrender.com)
 
 ---
 
