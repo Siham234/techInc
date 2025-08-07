@@ -77,16 +77,22 @@
   <h2>Contact Us</h2>
   <p>Have a project in mind or just want to say hello? Fill the form below.</p>
 
-  {% if success %}
-    <p style="color: green; font-weight: bold;">Thanks for contacting us! We’ll be in touch shortly.</p>
-  {% endif %}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p style="color: green; font-weight: bold;">{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
 
- <form action="/contact" method="POST">
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email" required>
-  <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-  <button type="submit">Send</button>
-</form>
+  <form action="/contact" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
+
 
 <!-- In templates/index.html -->
 {% if success %}
